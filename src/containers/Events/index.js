@@ -13,6 +13,8 @@ const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
+  
+  // Filter events by type and paginate them
   const filteredEvents = (
     (!type
       ? data?.events
@@ -26,11 +28,18 @@ const EventList = () => {
     }
     return false;
   });
+  
+
+  // Change the type of selected events
   const changeType = (evtType) => {
     setCurrentPage(1);
     setType(evtType);
   };
+  
+  // Calculate the number of pages
   const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
+  
+  // Create a list of unique types of events
   const typeList = new Set(data?.events.map((event) => event.type));
   return (
     <>
