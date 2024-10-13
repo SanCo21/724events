@@ -41,4 +41,5 @@ describe("When slider is created", () => {
       "Œuvre à la coopération entre le secteur public et le privé."
     );
   });
+
 });
