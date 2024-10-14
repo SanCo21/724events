@@ -14,14 +14,14 @@ const EventList = () => {
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   
-  console.log("Before filtering: ", data?.events);
+  // console.log("Before filtering: ", data?.events);
   // Filter events by type and paginate them
   const filteredEvents = (
     (!type
       ? data?.events
       : data?.events.filter(event => event.type === type)) || []
   ).filter((event, index) => {
-    console.log("Event: ", event); // Confirm 'event' is being read
+    // console.log("Event: ", event); // Confirm 'event' is being read
     if (
       (currentPage - 1) * PER_PAGE <= index &&
       PER_PAGE * currentPage > index
@@ -30,7 +30,7 @@ const EventList = () => {
     }
     return false;
   });
-  console.log("After filtering: ", filteredEvents);
+  // console.log("After filtering: ", filteredEvents);
 
   // Change the type of selected events
   const changeType = (evtType) => {
