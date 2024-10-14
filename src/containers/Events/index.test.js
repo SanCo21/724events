@@ -32,7 +32,7 @@ const data = {
         "Présentation des outils analytics aux professionnels du secteur",
       nb_guesses: 1300,
       periode: "24-25-26 Février",
-      prestations: ["1 espace d’exposition", "1 scéne principale"],
+      prestations: ["1 espace d’exposition", "1 scène principale"],
     },
   ],
 };
@@ -59,7 +59,7 @@ describe("When Events is created", () => {
     });
   });
   describe("and we select a category", () => {
-    it.only("an filtered list is displayed", async () => {
+    it.only("a filtered list is displayed", async () => {
       api.loadData = jest.fn().mockReturnValue(data);
       render(
         <DataProvider>
@@ -85,16 +85,6 @@ describe("When Events is created", () => {
       await screen.findByText("Conférence #productCON");
       expect(screen.queryByText("Forum #productCON")).not.toBeInTheDocument();
     });
-
-    // test('and we select a category, a filtered list is displayed', async () => {
-    //   await screen.findByText("Conférence #productCON");
-      
-    //   // Trigger the category selection
-    //   // Make sure to update this part to match your UI and logic
-      
-    //   expect(screen.queryByText("Forum #productCON")).not.toBeInTheDocument();
-    // });
-
   });
 
   describe("and we click on an event", () => {

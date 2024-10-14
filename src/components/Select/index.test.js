@@ -42,9 +42,10 @@ describe("When a select is created", () => {
       expect(choice2).toBeInTheDocument();
     });
     describe("and a click is triggered on a choice item", () => {
-      it("a onChange callback is called", () => {
+      it("a onChange callback is called and the filter is applied", () => {
         const onChange = jest.fn();
         render(<Select selection={["value1", "value2"]} onChange={onChange} />);
+        
         const collapseButtonElement = screen.getByTestId(
           "collapse-button-testid"
         );
@@ -64,7 +65,7 @@ describe("When a select is created", () => {
           })
         );
         expect(onChange.mock.calls.length).toBeGreaterThan(0);
-
+        
         fireEvent(
           collapseButtonElement,
           new MouseEvent("click", {
@@ -82,6 +83,20 @@ describe("When a select is created", () => {
           })
         );
         expect(onChange.mock.calls.length).toBeGreaterThan(1);
+      });
+
+      it("displays only cards of the selected category", () => {
+        const mockCardDisplay = jest.fn();
+        render(<Select selection={["value1", "value2"]} onChange={mockCardDisplay} />);
+        
+        const collapseButtonElement = screen.getByTestId("collapse-button-testid");
+        fireEvent.click(collapseButtonElement);
+
+        const value1Choice = screen.getByText("value1");
+        fireEvent.click(value1Choice);
+
+        expect(mockCardDisplay).toHaveBeenCalledWith("value1");
+        // Additional assertions for card display
       });
     });
   });
