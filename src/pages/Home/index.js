@@ -13,7 +13,7 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const { last } = useData();
-  console.log("last", last);
+  // console.log("last", last);
   return (
     <>
       <header>
@@ -115,8 +115,8 @@ const Page = () => {
         <div className="col presta">
           <h3>Notre dernière prestation</h3>
           <EventCard
-            imageSrc={last?.cover}
-            title={last?.title}
+            imageSrc={last?.cover || "./Logo724events.png"}
+            title={last?.title || "Erreur d'affichage" }
             date={new Date(last?.date)}
             small
             label="boom"

@@ -60,13 +60,12 @@ describe("When a page is created", () => {
     expect(screen.getByText("Notre dernière prestation")).toBeInTheDocument();
   })
   it("an event card, with the last event, is displayed", async () => {
+    // to implement
     render(<Home />); 
-
     expect(screen.getByTestId("card-testid")).toBeInTheDocument();
     const images = screen.getAllByTestId("card-image-testid");
     expect(images.length).toBeGreaterThan(0); // Check if any image is present
     expect(screen.getByText("Last Event Title")).toBeInTheDocument();
-    // expect(screen.getByText("24-25-26 Février")).toBeInTheDocument();
   });
 });
 
