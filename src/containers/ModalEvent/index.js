@@ -2,7 +2,12 @@ import PropTypes from "prop-types";
 
 import "./style.scss";
 
-const ModalEvent = ({ event }) => (
+const ModalEvent = ({ event }) => {
+  if (!event) {
+    return <div>Chargement...</div>;
+  }
+
+  return (
     <div className="ModalEvent">
       <div className="ModalEvent__imageContainer">
         <img
@@ -31,10 +36,19 @@ const ModalEvent = ({ event }) => (
       </div>
     </div>
   );
+} 
 
 ModalEvent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  event: PropTypes.any.isRequired,
+  // event: PropTypes.any.isRequired,
+  event : PropTypes.shape({
+    cover: PropTypes.string,
+    title: PropTypes.string,
+    periode: PropTypes.string,
+    description: PropTypes.string,
+    nb_guesses: PropTypes.number,
+    prestations: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
 }
 
 export default ModalEvent;

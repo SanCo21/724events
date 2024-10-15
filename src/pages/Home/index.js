@@ -117,12 +117,12 @@ const Page = () => {
       <footer className="row">
         <div className="col presta">
           <h3>Notre dernière prestation</h3>
-          <Modal Content={<ModalEvent event={last} />}>
+          <Modal Content={last ? <ModalEvent event={last} /> : <div>Chargement...</div>}>
             {({ setIsOpened }) => (
               <EventCard 
                 onClick={() => setIsOpened(true)}         
                 imageSrc={last?.cover || "./Logo724events.png"}
-                title={last?.title || "Erreur d'affichage" }
+                title={last?.title || "724 events" }
                 date={new Date(last?.date)}
                 small
                 label="boom"
