@@ -2,18 +2,21 @@ import Menu from "../../containers/Menu";
 import ServiceCard from "../../components/ServiceCard";
 import EventCard from "../../components/EventCard";
 import PeopleCard from "../../components/PeopleCard";
-
 import "./style.scss";
 import EventList from "../../containers/Events";
+
 import Slider from "../../containers/Slider";
 import Logo from "../../components/Logo";
 import Icon from "../../components/Icon";
 import Form from "../../containers/Form";
 import Modal from "../../containers/Modal";
+import ModalEvent from "../../containers/ModalEvent";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const { last } = useData();
+  // console.log("last", last);
+
   return (
     <>
       <header>
@@ -114,13 +117,18 @@ const Page = () => {
       <footer className="row">
         <div className="col presta">
           <h3>Notre dernière prestation</h3>
-          <EventCard
-            imageSrc={last?.cover}
-            title={last?.title}
-            date={new Date(last?.date)}
-            small
-            label="boom"
-          />
+          <Modal Content={last ? <ModalEvent event={last} /> : <div>Chargement...</div>}>
+            {({ setIsOpened }) => (
+              <EventCard 
+                onClick={() => setIsOpened(true)}         
+                imageSrc={last?.cover || "./Logo724events.png"}
+                title={last?.title || "724 events" }
+                date={new Date(last?.date)}
+                small
+                label="boom"
+              />
+          )}
+          </Modal>
         </div>
         <div className="col contact">
           <h3>Contactez-nous</h3>
