@@ -85,6 +85,16 @@ describe("When Events is created", () => {
       await screen.findByText("Conférence #productCON");
       expect(screen.queryByText("Forum #productCON")).not.toBeInTheDocument();
     });
+
+    // test('and we select a category, a filtered list is displayed', async () => {
+    //   await screen.findByText("Conférence #productCON");
+      
+    //   // Trigger the category selection
+    //   // Make sure to update this part to match your UI and logic
+      
+    //   expect(screen.queryByText("Forum #productCON")).not.toBeInTheDocument();
+    // });
+
   });
 
   describe("and we click on an event", () => {
