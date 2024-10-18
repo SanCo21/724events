@@ -47,7 +47,7 @@ const Slider = () => {
                   name="radio-button"
                   aria-label={`radio-button-${radioIdx}`}
                   checked={index === radioIdx}
-                  onChange={() => setIndex(radioIdx)}
+                  // onChange={() => setIndex(radioIdx)}
                 />
               ))}
             </div>
